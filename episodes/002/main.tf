@@ -37,14 +37,18 @@ resource azurerm_network_security_rule rule1 {
 
   name                        = "rule-100"
   priority                    = 100
-  direction                   = "Outbound"
+  direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
-  destination_port_range      = "*"
-  source_address_prefix       = "*"
+  destination_port_range      = "22"
+  source_address_prefix       = "${chomp(data.http.myip.body)}/32"
   destination_address_prefix  = "*"
 
+}
+
+data "http" "myip" {
+  url = "http://ipv4.icanhazip.com"
 }
 
 resource azurerm_subnet_network_security_group_association default_rule1 {
