@@ -21,6 +21,6 @@ source "azure-arm" "vm" {
 
   vm_size                           = "Standard_DS2_v2"
 
-  allowed_inbound_ip_addresses      = ["24.208.237.201"]
+  allowed_inbound_ip_addresses      = [var.my_ip_address]
 
 }
