@@ -10,3 +10,6 @@ variable "client_id" {
 variable "client_secret" {
   type = string
 }
+variable my_ip_address {
+  type = string
+}
