@@ -33,4 +33,3 @@ resource azurerm_virtual_machine_extension local_cse {
 SETTINGS
 
 }
-*/
