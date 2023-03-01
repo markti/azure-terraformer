@@ -19,7 +19,6 @@ module bedrock_local {
 }
 
 resource azurerm_virtual_machine_extension local_cse {
-
   name                 = "Minecraft-Final-Setup"
   virtual_machine_id   = module.bedrock_local.id
   publisher            = "Microsoft.Azure.Extensions"
@@ -27,9 +26,9 @@ resource azurerm_virtual_machine_extension local_cse {
   type_handler_version = "2.0"
 
   settings = <<SETTINGS
-  {
-    "commandToExecute": "systemctl enable mcbedrock"
-  }
+ {
+   "script": "${base64encode(file("${path.module}/scripts/minecraft-postprov.sh"))}"
+ }
 SETTINGS
 
 }
