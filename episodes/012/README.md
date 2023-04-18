@@ -1,3 +1,5 @@
+https://youtu.be/dWV4APYdSAg
+
 In this episode, we did the following:
 
 1. Created AzDO Variable Groups for Azure Credentials and Backend State
