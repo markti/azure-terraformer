@@ -1,0 +1,36 @@
+"properties": {
+    "description": "Data collection rule for VM Insights.",
+    "dataSources": {
+        "performanceCounters": [
+            {
+                "name": "VMInsightsPerfCounters",
+                "streams": [
+                    "Microsoft-InsightsMetrics"
+                ],
+                "scheduledTransferPeriod": "PT1M",
+                "samplingFrequencyInSeconds": 60,
+                "counterSpecifiers": [
+                    "\\VmInsights\\DetailedMetrics"
+                ]
+            }
+        ]
+    },
+    "destinations": {
+        "logAnalytics": [
+            {
+                "workspaceResourceId": "/subscriptions/32cfe0af-c5cf-4a55-9d85-897b85a8f07c/resourceGroups/DefaultResourceGroup-EUS/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-32cfe0af-c5cf-4a55-9d85-897b85a8f07c-EUS",
+                "name": "VMInsightsPerf-Logs-Dest"
+            }
+        ]
+    },
+    "dataFlows": [
+        {
+            "streams": [
+                "Microsoft-InsightsMetrics"
+            ],
+            "destinations": [
+                "VMInsightsPerf-Logs-Dest"
+            ]
+        }
+    ]
+}
