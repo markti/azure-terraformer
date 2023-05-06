@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "value": "cog-openai-lab1103"
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "sku": {
+            "value": "S0"
+        },
+        "tagValues": {
+            "value": {}
+        },
+        "virtualNetworkType": {
+            "value": "None"
+        },
+        "vnet": {
+            "value": {}
+        },
+        "ipRules": {
+            "value": []
+        },
+        "privateEndpoints": {
+            "value": []
+        },
+        "privateDnsZone": {
+            "value": "privatelink.cognitiveservices.azure.com"
+        },
+        "resourceGroupName": {
+            "value": "rg-openai-lab"
+        },
+        "resourceGroupId": {
+            "value": "/subscriptions/FOO/resourceGroups/rg-openai-lab"
+        }
+    }
+}
