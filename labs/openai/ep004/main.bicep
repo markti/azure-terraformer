@@ -1,18 +1,17 @@
-param location string = resourceGroup().location
+targetScope = 'subscription'
+param location string = 'East US'
 
-resource openai 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
-  name: 'cog-openai-1107'
+var prefix = uniqueString(subscription().subscriptionId)
+
+resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+  name: 'rg-${prefix}'
   location: location
-  sku: {
-    name: 'S0'
-  }
-  properties: {
-    customSubDomainName: 'cog-openai-1107'
-    publicNetworkAccess: 'Enabled'
-    networkAcls: {
-      defaultAction: 'Deny'
-      virtualNetworkRules: []
-      ipRules            : []
-    }
+}
+
+module cognitive './cognitive.bicep' = {
+  name: 'stuff'
+  scope: rg
+  params: {
+    name: prefix
   }
 }
