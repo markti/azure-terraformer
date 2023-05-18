@@ -1,0 +1,17 @@
+[Unit]
+Description=Minecraft Bedrock Server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+User=mcserver
+Group=mcserver
+ExecStart=/bin/bash /home/mcserver/minecraft_bedrock/start_server.sh
+ExecStop=/bin/bash /home/mcserver/minecraft_bedrock/stop_server.sh
+WorkingDirectory=/home/mcserver/minecraft_bedrock/
+Restart=always
+TimeoutStartSec=600
+
+[Install]
+WantedBy=multi-user.target
