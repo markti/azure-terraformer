@@ -1,0 +1,7 @@
+gallery_resource_group = "rg-aztf-machine-images-dev"
+gallery_name           = "galaztfmachineimagesdev"
+vm_size                = "Standard_DS2_v2"
+image_name             = "minecraft-bedrock-local"
+aws_primary_region     = "us-east-1"
+gcp_project_id         = "may-the-fourth-380804"
+gcp_primary_region     = "us-central1-a"

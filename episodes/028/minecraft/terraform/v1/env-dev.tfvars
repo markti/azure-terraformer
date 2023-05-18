@@ -1,0 +1,8 @@
+location                      = "West US"
+name                          = "minecraft"
+gallery_name                  = "galaztfmachineimagesdev"
+gallery_resource_group        = "rg-aztf-machine-images-dev"
+minecraft_blob_image_name     = "minecraft-bedrock-blobfuse"
+minecraft_blob_image_version  = "2023.03.2"
+minecraft_local_image_name    = "minecraft-bedrock-local"
+minecraft_local_image_version = "2023.03.8"
