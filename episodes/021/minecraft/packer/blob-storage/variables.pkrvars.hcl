@@ -1,0 +1,5 @@
+primary_location       = "West US"
+image_name             = "minecraft-bedrock-blobfuse"
+image_version          = "1.0.3"
+gallery_resource_group = "rg-aztf-machine-images-dev"
+gallery_name           = "galaztfmachineimagesdev"
