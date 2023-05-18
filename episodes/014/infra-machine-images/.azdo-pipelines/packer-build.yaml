@@ -1,0 +1,44 @@
+trigger:
+- none
+
+name: "$(Build.DefinitionName)$(Rev:.r)"
+
+pool:
+  vmImage: "ubuntu-20.04"
+
+variables:
+  currentYear: $[format('{0:yyyy}', pipeline.startTime)]
+  currentMonth: $[format('{0:MM}', pipeline.startTime)]
+  versionPrefix: $(currentYear).$(currentMonth)
+  versionPatch: $[counter(format('{0:yyyyMM}', pipeline.startTime), 0)]
+  imageVersion: '$(versionPrefix).$(versionPatch)'
+
+jobs:
+- job: packer
+  timeoutInMinutes: 0
+  steps:
+
+  - task: Bash@3
+    name: BuildAgentIP
+    inputs: 
+      targetType: 'inline'
+      script: |
+        ipaddress=$(curl -s http://ipinfo.io/ip)
+        echo "##vso[task.setvariable variable=address;isOutput=true;]$ipaddress"
+
+  - task: Bash@3
+    displayName: "packer build"
+    inputs:
+      filePath: .azdo-pipelines/scripts/packer.sh
+      workingDirectory: $(WorkingDirectory)
+    env: 
+      PKR_VAR_subscription_id: $(ARM_SUBSCRIPTION_ID)
+      PKR_VAR_tenant_id: $(ARM_TENANT_ID)
+      PKR_VAR_client_id: $(ARM_CLIENT_ID)
+      PKR_VAR_client_secret: $(ARM_CLIENT_SECRET)
+      PKR_VAR_primary_location: $(PrimaryLocation)
+      PKR_VAR_image_name: $(ImageName)
+      PKR_VAR_image_version: $(imageVersion)
+      PKR_VAR_gallery_resource_group: $(GalleryResourceGroup)
+      PKR_VAR_gallery_name: $(GalleryName)
+      PKR_VAR_agent_ipaddress: $(BuildAgentIP.address)
