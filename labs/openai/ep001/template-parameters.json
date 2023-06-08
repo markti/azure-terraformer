@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
-            "value": "cog-openai-lab1103"
+            "value": "cog-openai-lab1107"
         },
         "location": {
             "value": "eastus"

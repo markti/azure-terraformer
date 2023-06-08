@@ -9,9 +9,10 @@ resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 }
 
 module cognitive './cognitive.bicep' = {
-  name: 'stuff'
+  name: 'openai'
   scope: rg
   params: {
     name: prefix
+    location: rg.location
   }
 }
